@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
@@ -12,14 +13,26 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody rb;
     public bool isJumping = false;
-
+    [SerializeField] TMP_Text score;
+    [SerializeField] TMP_Text score2;
+    public static int  points;
+    void Awake()
+    {
+        score.text = "Score: " + points;
+        score2.text = "Score: " + points;
+    }
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
+        points = 0;
+        Time.timeScale = 1;
+
     }
 
     private void Update()
     {
+        score.text = "Score: " + points;
+        score2.text = "Score: " + points;
         // Player movement
         //  press WASD 
         float horizontalInput = Input.GetAxis("Horizontal");
@@ -59,5 +72,11 @@ public class PlayerController : MonoBehaviour
         Rigidbody bulletRb = bullet.GetComponent<Rigidbody>();
         bulletRb.velocity = transform.forward * bulletspeed;
         Destroy(bullet, 4f);    //destroy the bullet after 5 sec 
+    }
+    public void enemykiller()
+    {
+        points += 1;
+        score.text = "" + points;
+        score2.text = "" + points;
     }
 }
