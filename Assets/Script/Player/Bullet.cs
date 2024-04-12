@@ -7,11 +7,13 @@ public class Bullet : MonoBehaviour
     public float destroyAfterSeconds = 3f;
     public float destroyTimer;
     public EnemySpawner enemySpawner { get; private set; }
-
+   
+    
     private void Start()
     {
         destroyTimer = 0f;
         enemySpawner = FindObjectOfType<EnemySpawner>();
+        
     }
 
     private void Update()
@@ -32,7 +34,8 @@ public class Bullet : MonoBehaviour
             //Destroy the enemy 
             Destroy(collision.gameObject);
             enemySpawner.EnemySpawn();
+            PlayerController.points += 1; 
         }
 
-    }
+    } 
 }

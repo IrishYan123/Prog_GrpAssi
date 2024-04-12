@@ -129,3 +129,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   destroyAfterSeconds: 3
   destroyTimer: 0
+  score: {fileID: 2908898083034360389, guid: 42cbaafad88b4324ea349fa21b02607d, type: 3}
